@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\HomeSettingsController;
 use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\SocialIconController;
+use App\Http\Controllers\Backend\OverviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,6 +76,17 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::post('/update-social-icon/{id}', 'update')->name('update.social.icon');
         Route::get('/delete-social-icon/{id}', 'delete')->name('delete.social.icon');
         Route::post('/social-icon-status/{id}', 'status')->name('social.icon.status');
+    });
+
+    // Overview related routes 
+    Route::controller(OverviewController::class)->group(function () {
+        Route::get('/overview', 'index')->name('overview');
+        Route::post('/overview/store', 'store')->name('overview.store');
+        Route::get('/manage/overview', 'view')->name('manage.overview');
+        Route::get('/edit-overview/{id}', 'edit')->name('edit.overview');
+        Route::post('/update-overview/{id}', 'update')->name('update.overview');
+        Route::get('/delete-overview/{id}', 'delete')->name('delete.overview');
+        Route::post('/overview-status/{id}', 'status')->name('overview.status');
     });
 
 });
