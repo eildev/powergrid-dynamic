@@ -72,8 +72,10 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
 <script src="{{ asset('backend/assets/js/code.js') }}"></script>
-<script src="{{asset('backend')}}/assets/libs/tinymce/tinymce.min.js"></script>
-<script src="{{asset('backend')}}/assets/js/pages/form-editor.init.js"></script>
+<script src="{{ asset('backend') }}/assets/js/jquery.min.js"></script>
+
+<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+
       </body>
 
       </html>

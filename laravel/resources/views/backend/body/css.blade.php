@@ -41,6 +41,8 @@
             font-weight: 700px;
         }
     </style>
+     <!-- tinymce js here -->
+
 </head>
 
 <body data-topbar="dark">
