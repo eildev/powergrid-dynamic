@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-editable table-nowrap align-middle table-edits">
+                            <table id="datatable" class="table table-editable table-nowrap align-middle table-edits">
                                 <thead>
                                     <tr>
                                         <th>SN</th>
@@ -37,9 +37,9 @@
                                 </thead>
                                 <tbody>
                                     @if ($allData->count() > 0)
-                                        @foreach ($allData as $data)
+                                        @foreach ($allData as $key => $data)
                                             <tr>
-                                                <td>1</td>
+                                                <td>{{ $key + 1 }}</td>
                                                 <td>{{ Illuminate\Support\Str::limit($data->name, 15) }}</td>
                                                 <td>{{ Illuminate\Support\Str::limit($data->link, 15) }}</td>
                                                 <td>
