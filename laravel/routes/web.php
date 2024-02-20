@@ -35,16 +35,26 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::get('/admin/change/password', [AdminController::class, 'AdminChangePassword'])->name('change.password');
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('update.password');
 });
-//Footer Route
+
 Route::middleware(['auth','role:admin'])->group(function () {
+
+    //Footer Route
     Route::controller(FooterController::class)->group(function(){
         Route::get('/footer/add','FooterAdd')->name('add.footer');
         Route::post('/footer/store','StoreFooter')->name('store.footer');
         Route::get('/footer/view','ViewFooter')->name('view.footer');
     });
 
+    // home settings related routes
+    Route::controller(HomeSettingsController::class)->group(function () {
+        Route::get('/add-home-setting', 'index')->name('home.settings');
+        Route::post('/add-home-setting/store', 'store')->name('home.settings.store');
+        Route::get('/manage-home-setting', 'view')->name('manage.home.settings');
+    });
+
 });
-//
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -52,12 +62,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth','role:admin')->group(function () {
-    // home settings related routes
-    Route::controller(HomeSettingsController::class)->group(function () {
-        Route::get('/home-setting', 'index')->name('home.settings');
-    });
-});
 
 //Admin login forgot Pw Route
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');

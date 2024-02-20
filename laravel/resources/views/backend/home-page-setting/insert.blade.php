@@ -24,116 +24,59 @@
             <div class="col-12">
                 <div class="card">
                     <div class="card-body">
-                        <div class="row mb-3">
-                            <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="text" placeholder="Enter Title" id="example-text-input"
-                                    name="title">
+                        <form action="{{ route('home.settings.store') }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            <div class="row mb-3">
+                                <label for="example-text-input" class="col-sm-2 col-form-label">Title</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="text" placeholder="Enter Title"
+                                        id="example-text-input" name="title">
+                                </div>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-search-input" class="col-sm-2 col-form-label">Logo</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="search" placeholder="How do I shoot web"
-                                    id="example-search-input">
+                            <!-- end row -->
+                            <div class="row mb-3">
+                                <label for="example-search-input" class="col-sm-2 col-form-label">Logo</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="file" placeholder="How do I shoot web"
+                                        id="example-search-input" name="logo">
+                                </div>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-email-input" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="email" placeholder="bootstrap@example.com"
-                                    id="example-email-input">
+                            <!-- end row -->
+                            <div class="row mb-3">
+                                <label for="example-email-input" class="col-sm-2 col-form-label">Fav Icon</label>
+                                <div class="col-sm-10">
+                                    <input class="form-control" type="file" placeholder="fav Icon"
+                                        id="example-email-input" name="fav">
+                                </div>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-url-input" class="col-sm-2 col-form-label">URL</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="url" placeholder="https://getbootstrap.com"
-                                    id="example-url-input">
+                            <!-- end row -->
+                            <div class="row mb-3">
+                                <label for="example-url-input" class="col-sm-2 col-form-label">Short Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="3" placeholder="Short Description" name="short_description"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-tel-input" class="col-sm-2 col-form-label">Telephone</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="tel" placeholder="1-(555)-555-5555"
-                                    id="example-tel-input">
+                            <!-- end row -->
+                            <div class="row mb-3">
+                                <label for="example-tel-input" class="col-sm-2 col-form-label">Long Description</label>
+                                <div class="col-sm-10">
+                                    <textarea class="form-control" rows="5" maxlength="250" placeholder="Long Description" name="long_description"></textarea>
+                                </div>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-password-input" class="col-sm-2 col-form-label">Password</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="password" value="hunter2" id="example-password-input">
+                            <!-- end row -->
+
+                            <div class="row mb-3">
+                                <label for="example-tel-input" class="col-sm-2 col-form-label">Keyword</label>
+                                <div class="col-sm-10">
+                                    <input type="text" value="" class="form-control tag" style="width: 100%"
+                                        data-role="tagsinput" name="keywords" />
+                                </div>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-number-input" class="col-sm-2 col-form-label">Number</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="number" value="42" id="example-number-input">
+                            <!-- end row -->
+                            <div class="row mb-3 mx-auto text-center">
+                                <button class="btn btn-success waves-effect waves-light w-25 mx-auto">Submit</button>
                             </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-datetime-local-input" class="col-sm-2 col-form-label">Date and time</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="datetime-local" value="2011-08-19T13:45:00"
-                                    id="example-datetime-local-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-date-input" class="col-sm-2 col-form-label">Date</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="date" value="2011-08-19" id="example-date-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-month-input" class="col-sm-2 col-form-label">Month</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="month" value="2020-03" id="example-month-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-week-input" class="col-sm-2 col-form-label">Week</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="week" value="2020-W14" id="example-week-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-time-input" class="col-sm-2 col-form-label">Time</label>
-                            <div class="col-sm-10">
-                                <input class="form-control" type="time" value="13:45:00" id="example-time-input">
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label for="example-color-input" class="col-sm-2 col-form-label">Color</label>
-                            <div class="col-sm-10">
-                                <input type="color" class="form-control form-control-color w-100"
-                                    id="example-color-input" value="#0f9cf3" title="Choose your color">
-                            </div>
-                        </div>
-                        <!-- end row -->
-                        <div class="row mb-3">
-                            <label class="col-sm-2 col-form-label">Select</label>
-                            <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example">
-                                    <option selected="">Open this select menu</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
-                            </div>
-                        </div>
-                        <!-- end row -->
+                        </form>
                     </div>
                 </div>
             </div> <!-- end col -->
