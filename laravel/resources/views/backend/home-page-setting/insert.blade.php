@@ -73,8 +73,11 @@
                                 </div>
                             </div>
                             <!-- end row -->
-                            <div class="row mb-3 mx-auto text-center">
-                                <button class="btn btn-success waves-effect waves-light w-25 mx-auto">Submit</button>
+                            <div class="row mb-3">
+                                <label for="example-number-input" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <input type="submit" class="btn btn-info ">
+                                </div>
                             </div>
                         </form>
                     </div>

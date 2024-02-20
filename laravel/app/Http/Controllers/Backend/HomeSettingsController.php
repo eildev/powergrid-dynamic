@@ -79,4 +79,13 @@ class HomeSettingsController extends Controller
             return redirect()->route('manage.home.settings')->with('success', 'Home Settings Successfully updated');
         }
     }
+     
+     public function delete($id)
+     {
+        $homeData = HomeSettings::findOrFail($id);
+        unlink(public_path('uploads/home-settings/').$homeData->logo);
+        unlink(public_path('uploads/home-settings/').$homeData->fav);
+        $homeData->delete();
+        return back()->with('success', 'home settings Successfully deleted');
+     }
 }

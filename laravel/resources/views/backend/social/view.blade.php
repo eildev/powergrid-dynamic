@@ -5,12 +5,12 @@
         <div class="row">
             <div class="col-12">
                 <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                    <h4 class="mb-sm-0">Manage Home Settings</h4>
+                    <h4 class="mb-sm-0">Manage Social Settings</h4>
 
                     <div class="page-title-right">
                         <ol class="breadcrumb m-0">
-                            <li class="breadcrumb-item"><a href="javascript: void(0);">Dashboard</a></li>
-                            <li class="breadcrumb-item active">Manage Home Settings</li>
+                            <li class="breadcrumb-item"><a href="javascript: void(0);">Social Settings</a></li>
+                            <li class="breadcrumb-item active">Manage Social Settings</li>
                         </ol>
                     </div>
 
@@ -29,12 +29,9 @@
                                 <thead>
                                     <tr>
                                         <th>SN</th>
-                                        <th>Title</th>
-                                        <th>Short Description</th>
-                                        <th>Long Description</th>
-                                        <th>Logo</th>
-                                        <th>Fav Icons</th>
-                                        <th>Keywords</th>
+                                        <th>Name</th>
+                                        <th>Link</th>
+                                        <th>Status</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
@@ -45,26 +42,24 @@
                                     @foreach ($allData as $data)
                                         <tr>
                                             <td>1</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->title, 15) }}</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->short_description, 15) }}</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->long_description, 15) }}</td>
+                                            <td>{{ Illuminate\Support\Str::limit($data->name, 15) }}</td>
+                                            <td>{{ Illuminate\Support\Str::limit($data->link, 15) }}</td>
                                             <td>
-                                                <img style="height: 50px; object-fit:contain;"
-                                                    src="{{ asset('uploads/home-settings/' . $data->logo) }}"
-                                                    alt="logo image">
+                                                <form action="{{ route('social.icon.status', $data->id) }}" method="POST">
+                                                    @csrf
+                                                    @if ($data->status == 1)
+                                                        <button class="btn btn-success ">Active</button>
+                                                    @else
+                                                        <button class="btn btn-danger ">Inactive</button>
+                                                    @endif
+                                                </form>
                                             </td>
                                             <td>
-                                                <img style="height: 50px; object-fit:contain;"
-                                                    src="{{ asset('uploads/home-settings/' . $data->fav) }}"
-                                                    alt="Fav icons">
-                                            </td>
-                                            <td> {{ Illuminate\Support\Str::limit($data->keywords, 15) }}</td>
-                                            <td>
-                                                <a href="{{ route('edit.home.settings', $data->id) }}"
+                                                <a href="{{ route('edit.social.icon', $data->id) }}"
                                                     class="btn btn-outline-secondary btn-sm edit" title="Edit">
                                                     <i class="fas fa-pencil-alt"></i>
                                                 </a>
-                                                <a id="delete" href="{{ route('delete.home.settings', $data->id) }}"
+                                                <a id="delete" href="{{ route('delete.social.icon', $data->id) }}"
                                                     class="btn btn-outline-secondary btn-sm edit" title="delete">
                                                     <i class="fas fa-trash-alt"></i>
                                                 </a>
