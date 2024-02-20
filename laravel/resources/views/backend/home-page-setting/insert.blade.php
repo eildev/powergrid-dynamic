@@ -33,7 +33,7 @@
                         </div>
                         <!-- end row -->
                         <div class="row mb-3">
-                            <label for="example-search-input" class="col-sm-2 col-form-label">Search</label>
+                            <label for="example-search-input" class="col-sm-2 col-form-label">Logo</label>
                             <div class="col-sm-10">
                                 <input class="form-control" type="search" placeholder="How do I shoot web"
                                     id="example-search-input">

@@ -100,19 +100,15 @@
                     </ul>
                 </li>
 
-                <li class="menu-title">Components</li>
+                <li class="menu-title">Footer</li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-share-line"></i>
-                        <span>Multi Level</span>
+                        <span>Footer Manage</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="javascript: void(0);">Level 1.1</a></li>
-                        <li><a href="javascript: void(0);" class="has-arrow">Level 1.2</a>
-                            <ul class="sub-menu" aria-expanded="true">
-                                <li><a href="javascript: void(0);">Level 2.1</a></li>
-                                <li><a href="javascript: void(0);">Level 2.2</a></li>
-                            </ul>
+                        <li><a href="{{route('add.footer')}}">Add Footer</a></li>
+                        <li><a href="javascript: void(0);" class="has-arrow">Footer info Check</a>
                         </li>
                     </ul>
                 </li>

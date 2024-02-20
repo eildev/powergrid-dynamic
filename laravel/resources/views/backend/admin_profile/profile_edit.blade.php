@@ -52,7 +52,7 @@
               <div class="row mb-3">
                  <label for="example-text-input" class="col-sm-2 col-form-label">  </label>
                 <div class="col-sm-10">
-                    <img id="showImage" class="rounded avatar-lg" src="{{(!empty('$editData->photo')) ?url('admin_image/profile/'.$editData->photo): url('admin_image/profile/no_images.png')}}" alt="Card image cap">
+                    <img id="showImage" class="rounded avatar-lg" src="{{(!empty($editData->photo)) ?url('admin_image/profile/'.$editData->photo): url('admin_image/profile/no_images.png')}}" alt="Card image cap">
                 </div>
             </div>
             <!-- end row -->
