@@ -38,6 +38,16 @@
                         <li><a href="{{ route('manage.home.settings') }}">Manage Home Settings</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>About Settings</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('about.add') }}">Add About Settings</a></li>
+                        <li><a href="{{ route('manage.home.settings') }}">Manage About Settings</a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -107,13 +117,9 @@
                         <span>Footer Manage</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <<<<<<< HEAD <li><a href="{{ route('add.footer') }}">Add Footer</a>
-                </li>
-                <li><a href="javascript: void(0);" class="has-arrow">Footer info Check</a>
-                    =======
                 <li><a href="{{ route('add.footer') }}">Add Footer</a></li>
                 <li><a href="{{ route('view.footer') }}" class="has-arrow">Footer info Check</a>
-                    >>>>>>> 391de28758215eaf891b2217b79a80f9a95522a5
+
                 </li>
             </ul>
             </li>

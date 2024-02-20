@@ -26,10 +26,39 @@ class FooterController extends Controller
             'message' =>'Footer Data Inert Sccessfully',
             'alert-type'=> 'info'
          );
-        return redirect()->back()->with($notification);
+        return redirect()->route('view.footer')->with($notification);
     }//End Store Function
     public function ViewFooter(){
         $footer = FooterSetting::latest()->get();
         return view('backend.footer.view',compact('footer'));
     }//End Method
+    public function EditFooter($id){
+        $footer = FooterSetting::findOrFail($id);
+        return view('backend.footer.edit',compact('footer'));
+    }//End Method
+
+    public function UpdateFooter(Request $request ,$id){
+        FooterSetting::findOrFail($id)->update([
+           'fullAddress' => $request->fullAddress,
+           'location' => $request->location,
+           'link' => $request->link,
+           'phone' => $request->phone,
+           'email' => $request->email,
+           'website' => $request->website,
+           'updated_at'=> Carbon::now(),
+        ]);
+        $notification = array(
+            'message' =>'Footer Data Update Sccessfully',
+            'alert-type'=> 'info'
+         );
+        return redirect()->route('view.footer')->with($notification);
+    }//End Store Function
+    public function DeleteFooter($id){
+        FooterSetting::findOrFail($id)->delete();
+        $notification = array(
+            'message' =>'Footer Deleted Sccessfully',
+            'alert-type'=> 'info'
+         );
+        return redirect()->route('view.footer')->with($notification);
+    }
 }
