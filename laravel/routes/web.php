@@ -6,6 +6,7 @@ use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\HomeSettingsController;
 use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\AboutController;
+use App\Http\Controllers\Backend\SocialIconController;
 
 /*
 |--------------------------------------------------------------------------
@@ -54,6 +55,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('/add-home-setting', 'index')->name('home.settings');
         Route::post('/add-home-setting/store', 'store')->name('home.settings.store');
         Route::get('/manage-home-setting', 'view')->name('manage.home.settings');
+        Route::get('/edit-home-setting/{id}', 'edit')->name('edit.home.settings');
+        Route::post('/update-home-setting/{id}', 'update')->name('update.home.settings');
+        Route::get('/delete-home-setting/{id}', 'delete')->name('delete.home.settings');
     });
 
     // About related routes
@@ -65,6 +69,17 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::post('/about/update/{id}', 'UpdateAbout')->name('update.about');
         Route::get('/about/delete/{id}', 'DeleteAbout')->name('delete.about');
 
+    });
+
+    // social Icon related routes 
+    Route::controller(SocialIconController::class)->group(function () {
+        Route::get('/social-icon', 'index')->name('social.icon');
+        Route::post('/social-icon/store', 'store')->name('social.icon.store');
+        Route::get('/manage/social-icon', 'view')->name('manage.social.icon');
+        Route::get('/edit-social-icon/{id}', 'edit')->name('edit.social.icon');
+        Route::post('/update-social-icon/{id}', 'update')->name('update.social.icon');
+        Route::get('/delete-social-icon/{id}', 'delete')->name('delete.social.icon');
+        Route::post('/social-icon-status/{id}', 'status')->name('social.icon.status');
     });
 
 });
