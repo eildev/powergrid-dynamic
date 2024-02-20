@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
 use App\Http\Controllers\Backend\HomeSettingsController;
 use App\Http\Controllers\Backend\FooterController;
+use App\Http\Controllers\Backend\AboutController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('/footer/add','FooterAdd')->name('add.footer');
         Route::post('/footer/store','StoreFooter')->name('store.footer');
         Route::get('/footer/view','ViewFooter')->name('view.footer');
+        Route::get('/footer/edit/{id}','EditFooter')->name('edit.footer');
+        Route::post('/footer/update/{id}','UpdateFooter')->name('update.footer');
+        Route::get('/footer/delete/{id}','DeleteFooter')->name('delete.footer');
     });
 
     // home settings related routes
@@ -53,6 +57,12 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('/edit-home-setting/{id}', 'edit')->name('edit.home.settings');
         Route::post('/update-home-setting/{id}', 'update')->name('update.home.settings');
         Route::get('/delete-home-setting/{id}', 'delete')->name('delete.home.settings');
+    });
+
+    // About related routes
+    Route::controller(AboutController::class)->group(function () {
+        Route::get('/about/add', 'AboutAdd')->name('about.add');
+
     });
 
 });
