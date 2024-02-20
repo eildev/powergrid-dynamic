@@ -31,11 +31,11 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-                        <span>Email</span>
+                        <span>Home Settings</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
-                        <li><a href="email-inbox.html">Inbox</a></li>
-                        <li><a href="email-read.html">Read Email</a></li>
+                        <li><a href="{{ route('home.settings') }}">Add Home Settings</a></li>
+                        <li><a href="{{ route('manage.home.settings') }}">Manage Home Settings</a></li>
                     </ul>
                 </li>
 
@@ -107,7 +107,7 @@
                         <span>Footer Manage</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="{{route('add.footer')}}">Add Footer</a></li>
+                        <li><a href="{{ route('add.footer') }}">Add Footer</a></li>
                         <li><a href="javascript: void(0);" class="has-arrow">Footer info Check</a>
                         </li>
                     </ul>
