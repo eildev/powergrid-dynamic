@@ -9,7 +9,7 @@
     <div class="col-lg-6">
         <div class="card"><br><br>
         <center>
-            <img class="rounded-circle avatar-xl" src="{{(!empty('$adminData->photo')) ?url('admin_image/profile/'.$adminData->photo): url('admin_image/profile/no_images.png')}}"alt="Card image cap">
+            <img class="rounded-circle avatar-xl" src="{{(!empty($adminData->photo)) ?url('admin_image/profile/'.$adminData->photo): url('admin_image/profile/no_images.png')}}"alt="Card image cap">
 </center>
 
             <div class="card-body">
