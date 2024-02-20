@@ -39,38 +39,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
-                                        
-                                    @endphp --}}
-                                    @foreach ($allData as $data)
+                                    @if ($allData->count() > 0)
+                                        @foreach ($allData as $data)
+                                            <tr>
+                                                <td>1</td>
+                                                <td>{{ Illuminate\Support\Str::limit($data->title, 15) }}</td>
+                                                <td>{{ Illuminate\Support\Str::limit($data->short_description, 15) }}</td>
+                                                <td>{{ Illuminate\Support\Str::limit($data->long_description, 15) }}</td>
+                                                <td>
+                                                    <img style="height: 50px; object-fit:contain;"
+                                                        src="{{ asset('uploads/home-settings/' . $data->logo) }}"
+                                                        alt="logo image">
+                                                </td>
+                                                <td>
+                                                    <img style="height: 50px; object-fit:contain;"
+                                                        src="{{ asset('uploads/home-settings/' . $data->fav) }}"
+                                                        alt="Fav icons">
+                                                </td>
+                                                <td> {{ Illuminate\Support\Str::limit($data->keywords, 15) }}</td>
+                                                <td>
+                                                    <a href="{{ route('edit.home.settings', $data->id) }}"
+                                                        class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a id="delete" href="{{ route('delete.home.settings', $data->id) }}"
+                                                        class="btn btn-outline-secondary btn-sm edit" title="delete">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
                                         <tr>
-                                            <td>1</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->title, 15) }}</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->short_description, 15) }}</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->long_description, 15) }}</td>
-                                            <td>
-                                                <img style="height: 50px; object-fit:contain;"
-                                                    src="{{ asset('uploads/home-settings/' . $data->logo) }}"
-                                                    alt="logo image">
-                                            </td>
-                                            <td>
-                                                <img style="height: 50px; object-fit:contain;"
-                                                    src="{{ asset('uploads/home-settings/' . $data->fav) }}"
-                                                    alt="Fav icons">
-                                            </td>
-                                            <td> {{ Illuminate\Support\Str::limit($data->keywords, 15) }}</td>
-                                            <td>
-                                                <a href="{{ route('edit.home.settings', $data->id) }}"
-                                                    class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
-                                                <a id="delete" href="{{ route('delete.home.settings', $data->id) }}"
-                                                    class="btn btn-outline-secondary btn-sm edit" title="delete">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
-                                            </td>
+                                            <td colspan="8" class="text-center"> Data not Found</td>
                                         </tr>
-                                    @endforeach
+                                    @endif
+
                                 </tbody>
                             </table>
                         </div>

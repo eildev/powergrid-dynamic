@@ -37,40 +37,44 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
-                                        
-                                    @endphp --}}
-                                    @foreach ($allData as $data)
+                                    @if ($allData->count() > 0)
+                                        @foreach ($allData as $data)
+                                            <tr>
+                                                <td>1</td>
+                                                <td>{{ Illuminate\Support\Str::limit($data->title, 15) }}</td>
+                                                <td>{{ $data->experience }}</td>
+                                                <td>
+                                                    <img style="height: 50px; object-fit:contain;"
+                                                        src="{{ asset('uploads/overview/' . $data->icon) }}"
+                                                        alt="icon image">
+                                                </td>
+                                                <td>
+                                                    <form action="{{ route('overview.status', $data->id) }}" method="POST">
+                                                        @csrf
+                                                        @if ($data->status == 1)
+                                                            <button class="btn btn-success ">Active</button>
+                                                        @else
+                                                            <button class="btn btn-danger ">Inactive</button>
+                                                        @endif
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('edit.overview', $data->id) }}"
+                                                        class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a id="delete" href="{{ route('delete.overview', $data->id) }}"
+                                                        class="btn btn-outline-secondary btn-sm edit" title="delete">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
                                         <tr>
-                                            <td>1</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->title, 15) }}</td>
-                                            <td>{{ $data->experience }}</td>
-                                            <td>
-                                                <img style="height: 50px; object-fit:contain;"
-                                                    src="{{ asset('uploads/overview/' . $data->icon) }}" alt="icon image">
-                                            </td>
-                                            <td>
-                                                <form action="{{ route('overview.status', $data->id) }}" method="POST">
-                                                    @csrf
-                                                    @if ($data->status == 1)
-                                                        <button class="btn btn-success ">Active</button>
-                                                    @else
-                                                        <button class="btn btn-danger ">Inactive</button>
-                                                    @endif
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('edit.overview', $data->id) }}"
-                                                    class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
-                                                <a id="delete" href="{{ route('delete.overview', $data->id) }}"
-                                                    class="btn btn-outline-secondary btn-sm edit" title="delete">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
-                                            </td>
+                                            <td colspan="6" class="text-center"> Data not Found</td>
                                         </tr>
-                                    @endforeach
+                                    @endif
                                 </tbody>
                             </table>
                         </div>
