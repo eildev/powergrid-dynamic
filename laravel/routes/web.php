@@ -3,12 +3,9 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Backend\AdminController;
-<<<<<<< HEAD
 use App\Http\Controllers\Backend\HomeSettingsController;
-=======
 use App\Http\Controllers\Backend\FooterController;
 
->>>>>>> 6fa51716dddd7b03c4dd4ef414cffe6eeaf315b6
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -56,7 +53,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::middleware('auth','role:admin')->group(function () {
-    // home settings related routes 
+    // home settings related routes
     Route::controller(HomeSettingsController::class)->group(function () {
         Route::get('/home-setting', 'index')->name('home.settings');
     });

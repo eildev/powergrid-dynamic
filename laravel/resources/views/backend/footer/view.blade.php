@@ -24,9 +24,9 @@
 
 
                         <tbody>
-                            @foreach ($footer as $item)
+                            @foreach ($footer as $key => $item)
                             <tr>
-                                <td>Tiger Nixon</td>
+                                <td>{{$key+1}}</td>
                                 <td>{{$item->fullAddress}}</td>
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->phone}}</td>
