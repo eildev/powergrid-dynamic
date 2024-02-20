@@ -59,6 +59,11 @@ Route::middleware(['auth','role:admin'])->group(function () {
     // About related routes
     Route::controller(AboutController::class)->group(function () {
         Route::get('/about/add', 'AboutAdd')->name('about.add');
+        Route::post('/about/store', 'StoreAbout')->name('store.about');
+        Route::get('/about/view', 'ViewAbout')->name('about.view');
+        Route::get('/about/edit/{id}', 'EditAbout')->name('edit.about');
+        Route::post('/about/update/{id}', 'UpdateAbout')->name('update.about');
+        Route::get('/about/delete/{id}', 'DeleteAbout')->name('delete.about');
 
     });
 
