@@ -41,6 +41,8 @@ Route::middleware(['auth','role:admin'])->group(function () {
     //Footer Route
     Route::controller(FooterController::class)->group(function(){
         Route::get('/footer/add','FooterAdd')->name('add.footer');
+        Route::post('/footer/store','StoreFooter')->name('store.footer');
+        Route::get('/footer/view','ViewFooter')->name('view.footer');
     });
 
     // home settings related routes 

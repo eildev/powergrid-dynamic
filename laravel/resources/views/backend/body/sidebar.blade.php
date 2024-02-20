@@ -107,11 +107,16 @@
                         <span>Footer Manage</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
-                        <li><a href="{{ route('add.footer') }}">Add Footer</a></li>
-                        <li><a href="javascript: void(0);" class="has-arrow">Footer info Check</a>
-                        </li>
-                    </ul>
+                        <<<<<<< HEAD <li><a href="{{ route('add.footer') }}">Add Footer</a>
                 </li>
+                <li><a href="javascript: void(0);" class="has-arrow">Footer info Check</a>
+                    =======
+                <li><a href="{{ route('add.footer') }}">Add Footer</a></li>
+                <li><a href="{{ route('view.footer') }}" class="has-arrow">Footer info Check</a>
+                    >>>>>>> 391de28758215eaf891b2217b79a80f9a95522a5
+                </li>
+            </ul>
+            </li>
 
             </ul>
         </div>

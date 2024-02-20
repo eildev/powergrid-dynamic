@@ -23,11 +23,10 @@
       <script src="{{ asset('backend') }}/assets/libs/datatables.net-responsive-bs4/js/responsive.bootstrap4.min.js">
       </script>
 
-      <script src="{{ asset('backend') }}/assets/js/pages/dashboard.init.js"></script>
 
       <!-- App js -->
       <script src="{{ asset('backend') }}/assets/js/app.js"></script>
-
+      <script src="{{ asset('Backend') }}/assets/js/pages/datatables.init.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
       {{-- tags input  --}}
       <script src="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.min.js"></script>
@@ -72,14 +71,6 @@
               $('#datatable').DataTable();
           });
       </script>
-
-
-
-
-
-
-
-
 
 
       </body>
