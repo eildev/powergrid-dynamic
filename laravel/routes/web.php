@@ -50,6 +50,9 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('/add-home-setting', 'index')->name('home.settings');
         Route::post('/add-home-setting/store', 'store')->name('home.settings.store');
         Route::get('/manage-home-setting', 'view')->name('manage.home.settings');
+        Route::get('/edit-home-setting/{id}', 'edit')->name('edit.home.settings');
+        Route::post('/update-home-setting/{id}', 'update')->name('update.home.settings');
+        Route::get('/delete-home-setting/{id}', 'delete')->name('delete.home.settings');
     });
 
 });
