@@ -159,11 +159,16 @@
             <div class="dropdown d-inline-block user-dropdown">
                 <button type="button" class="btn header-item waves-effect" id="page-header-user-dropdown"
                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <img class="rounded-circle header-profile-user" src="" alt="Header Avatar">
-                    {{-- <img class="rounded-circle header-profile-user" src="{{(!empty('$adminData->photo')) ?url('admin_image/profile/'.Illuminate\Support\Facades\Auth::user()->photo): url('admin_image/profile/no_images.png')}}"
+                    <img class="rounded-circle header-profile-user"
+                        src="{{ !empty($adminData->photo) ? url('admin_image/profile/' . Illuminate\Support\Facades\Auth::user()->photo) : url('admin_image/profile/no_images.png') }}
+                    "
+                        alt="Header Avatar">
+                    {{-- <img class="rounded-circle header-profile-user"
+                        src="{{ !empty('$adminData->photo') ? url('admin_image/profile/' . Illuminate\Support\Facades\Auth::user()->photo) : url('admin_image/profile/no_images.png') }}"
                         alt="Header Avatar"> --}}
-                    <span class="d-none d-xl-inline-block ms-1">Jhon doe</span>
-                    {{-- <span class="d-none d-xl-inline-block ms-1">{{Illuminate\Support\Facades\Auth::user()->name}}</span> --}}
+                    {{-- <span class="d-none d-xl-inline-block ms-1">Jhon doe</span> --}}
+                    <span
+                        class="d-none d-xl-inline-block ms-1">{{ Illuminate\Support\Facades\Auth::user()->name ?? 'John Doe' }}</span>
                     <i class="mdi mdi-chevron-down d-none d-xl-inline-block"></i>
                 </button>
                 <div class="dropdown-menu dropdown-menu-end">
