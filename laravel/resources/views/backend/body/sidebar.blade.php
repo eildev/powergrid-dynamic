@@ -108,7 +108,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="true">
                         <li><a href="{{route('add.footer')}}">Add Footer</a></li>
-                        <li><a href="javascript: void(0);" class="has-arrow">Footer info Check</a>
+                        <li><a href="{{route('view.footer')}}" class="has-arrow">Footer info Check</a>
                         </li>
                     </ul>
                 </li>
