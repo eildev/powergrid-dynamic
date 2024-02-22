@@ -25,7 +25,7 @@
                 <div class="card">
                     <div class="card-body">
                         <div class="table-responsive">
-                            <table class="table table-editable table-nowrap align-middle table-edits">
+                            <table id="datatable" class="table table-editable table-nowrap align-middle table-edits">
                                 <thead>
                                     <tr>
                                         <th>SN</th>
@@ -36,36 +36,41 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    {{-- @php
-                                        
-                                    @endphp --}}
-                                    @foreach ($allData as $data)
+                                    @if ($allData->count() > 0)
+                                        @foreach ($allData as $key => $data)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ Illuminate\Support\Str::limit($data->name, 15) }}</td>
+                                                <td>{{ Illuminate\Support\Str::limit($data->link, 15) }}</td>
+                                                <td>
+                                                    <form action="{{ route('social.icon.status', $data->id) }}"
+                                                        method="POST">
+                                                        @csrf
+                                                        @if ($data->status == 1)
+                                                            <button class="btn btn-success ">Active</button>
+                                                        @else
+                                                            <button class="btn btn-danger ">Inactive</button>
+                                                        @endif
+                                                    </form>
+                                                </td>
+                                                <td>
+                                                    <a href="{{ route('edit.social.icon', $data->id) }}"
+                                                        class="btn btn-outline-secondary btn-sm edit" title="Edit">
+                                                        <i class="fas fa-pencil-alt"></i>
+                                                    </a>
+                                                    <a id="delete" href="{{ route('delete.social.icon', $data->id) }}"
+                                                        class="btn btn-outline-secondary btn-sm edit" title="delete">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    @else
                                         <tr>
-                                            <td>1</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->name, 15) }}</td>
-                                            <td>{{ Illuminate\Support\Str::limit($data->link, 15) }}</td>
-                                            <td>
-                                                <form action="{{ route('social.icon.status', $data->id) }}" method="POST">
-                                                    @csrf
-                                                    @if ($data->status == 1)
-                                                        <button class="btn btn-success ">Active</button>
-                                                    @else
-                                                        <button class="btn btn-danger ">Inactive</button>
-                                                    @endif
-                                                </form>
-                                            </td>
-                                            <td>
-                                                <a href="{{ route('edit.social.icon', $data->id) }}"
-                                                    class="btn btn-outline-secondary btn-sm edit" title="Edit">
-                                                    <i class="fas fa-pencil-alt"></i>
-                                                </a>
-                                                <a id="delete" href="{{ route('delete.social.icon', $data->id) }}"
-                                                    class="btn btn-outline-secondary btn-sm edit" title="delete">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </a>
-                                            </td>
+                                            <td colspan="5" class="text-center"> Data not Found</td>
                                         </tr>
-                                    @endforeach
+                                    @endif
+
                                 </tbody>
                             </table>
                         </div>

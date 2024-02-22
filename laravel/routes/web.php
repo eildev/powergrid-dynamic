@@ -11,6 +11,7 @@ use App\Http\Controllers\Backend\GalleryController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\ServicesController;
 use App\Http\Controllers\Backend\ManagingTeamController;
+use App\Http\Controllers\Backend\OverviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -133,6 +134,17 @@ Route::middleware(['auth','role:admin'])->group(function () {
     //    Route::post('/services/details/update/{id}', 'UpdateServicesDetails')->name('update.service.details');
     //    Route::get('/services/details/delete/{id}', 'DeleteServicesDetails')->name('delete.services.details');
         });
+
+    // Overview related routes
+    Route::controller(OverviewController::class)->group(function () {
+        Route::get('/overview', 'index')->name('overview');
+        Route::post('/overview/store', 'store')->name('overview.store');
+        Route::get('/manage/overview', 'view')->name('manage.overview');
+        Route::get('/edit-overview/{id}', 'edit')->name('edit.overview');
+        Route::post('/update-overview/{id}', 'update')->name('update.overview');
+        Route::get('/delete-overview/{id}', 'delete')->name('delete.overview');
+        Route::post('/overview-status/{id}', 'status')->name('overview.status');
+    });
 
 });
 
