@@ -7,6 +7,10 @@ use App\Http\Controllers\Backend\HomeSettingsController;
 use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\SocialIconController;
+use App\Http\Controllers\Backend\GalleryController;
+use App\Http\Controllers\Backend\CategoryController;
+use App\Http\Controllers\Backend\ServicesController;
+use App\Http\Controllers\Backend\ManagingTeamController;
 
 /*
 |--------------------------------------------------------------------------
@@ -71,7 +75,7 @@ Route::middleware(['auth','role:admin'])->group(function () {
 
     });
 
-    // social Icon related routes 
+    // social Icon related routes
     Route::controller(SocialIconController::class)->group(function () {
         Route::get('/social-icon', 'index')->name('social.icon');
         Route::post('/social-icon/store', 'store')->name('social.icon.store');
@@ -81,15 +85,63 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('/delete-social-icon/{id}', 'delete')->name('delete.social.icon');
         Route::post('/social-icon-status/{id}', 'status')->name('social.icon.status');
     });
+  //Category Related Routes
+        Route::controller(CategoryController::class)->group(function () {
+        Route::get('/category/add', 'CategoryAdd')->name('category.add');
+        Route::post('/category/store', 'StoreCategory')->name('store.category');
+        Route::get('/category/view', 'ViewCategory')->name('category.view');
+        Route::get('/category/edit/{id}', 'EditCategory')->name('edit.category');
+        Route::post('/category/update/{id}', 'UpdateCategory')->name('update.category');
+        Route::get('/category/delete/{id}', 'DeleteCategory')->name('delete.category');
+
+    });
+       //Gallery Related Routes
+        Route::controller(GalleryController::class)->group(function () {
+        Route::get('/gallery/add', 'GalleryAdd')->name('gallery.add');
+        Route::post('/gallery/store', 'StoreGallery')->name('store.gallery');
+        Route::get('/gallery/view', 'ViewGallery')->name('gallery.view');
+        Route::get('/gallery/edit/{id}', 'EditGallery')->name('edit.gallery');
+        Route::post('/gallery/update/{id}', 'UpdateGallery')->name('update.gallery');
+        Route::get('/gallery/delete/{id}', 'DeleteGallery')->name('delete.gallery');
+
+     });
+  //Services Related Routes
+       Route::controller(ServicesController::class)->group(function () {
+       Route::get('/services/add', 'ServicesAdd')->name('service.add');
+       Route::post('/services/store', 'StoreServices')->name('store.services');
+       Route::get('/services/view', 'ViewServices')->name('service.view');
+       Route::get('/services/edit/{id}', 'EditServices')->name('edit.services');
+       Route::post('/services/update/{id}', 'UpdateServices')->name('update.services');
+       Route::get('/services/delete/{id}', 'DeleteServices')->name('delete.services');
+
+        });
+  //Services Details Related Routes
+       Route::controller(ServicesController::class)->group(function () {
+       Route::get('/services/details/add', 'ServicesDetailsAdd')->name('service.details.add');
+       Route::post('/services/details/store', 'StoreServicesDetails')->name('store.service.details');
+       Route::get('/services/details/view', 'ViewServicesDetails')->name('service.details.view');
+       Route::get('/services/details/edit/{id}', 'EditServicesDetails')->name('edit.services.details');
+       Route::post('/services/details/update/{id}', 'UpdateServicesDetails')->name('update.service.details');
+       Route::get('/services/details/delete/{id}', 'DeleteServicesDetails')->name('delete.services.details');
+        });
+   //Managing Team Related Routes
+       Route::controller(ManagingTeamController::class)->group(function () {
+       Route::get('/managing/team/add', 'ManagingTeamAdd')->name('managing.team.add');
+       Route::post('/managing/team/store', 'StoreManagingTeam')->name('store.managing.team');
+    //    Route::get('/services/details/view', 'ViewServicesDetails')->name('service.details.view');
+    //    Route::get('/services/details/edit/{id}', 'EditServicesDetails')->name('edit.services.details');
+    //    Route::post('/services/details/update/{id}', 'UpdateServicesDetails')->name('update.service.details');
+    //    Route::get('/services/details/delete/{id}', 'DeleteServicesDetails')->name('delete.services.details');
+        });
 
 });
 
 
-Route::middleware('auth')->group(function () {
+    Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+     });
 
 
 

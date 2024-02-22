@@ -58,7 +58,56 @@
                         <li><a href="{{ route('manage.social.icon') }}">Manage Social Settings</a></li>
                     </ul>
                 </li>
-
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Category Settings</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('category.add') }}">Add Category</a></li>
+                        <li><a href="{{ route('category.view') }}">Manage Category</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Gallery Settings</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('gallery.add') }}">Add Gallery</a></li>
+                        <li><a href="{{ route('gallery.view') }}">Manage Gallery</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Our Services</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('service.add') }}">Add Services</a></li>
+                        <li><a href="{{ route('service.view') }}">Manage Services</a></li>
+                        <li>
+                            <a href="javascript: void(0);" class="has-arrow waves-effect">
+                                <i class="ri-mail-send-line"></i>
+                                <span>Services Details</span>
+                            </a>
+                            <ul class="sub-menu" aria-expanded="false">
+                                <li><a href="{{ route('service.details.add') }}">Add Services Details</a></li>
+                                <li><a href="{{ route('service.details.view') }}">Manage Services Details</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Managing Team</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('managing.team.add') }}">Add Managing Team</a></li>
+                        <li><a href="{{ route('gallery.view') }}">Manage Managing team</a></li>
+                    </ul>
+                </li>
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-layout-3-line"></i>

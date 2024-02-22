@@ -11,11 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('about_settings', function (Blueprint $table) {
+        Schema::create('galleries', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('category_id');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->string('title')->nullable();
-            $table->text('description')->nullable();
-            $table->string('image')->nullable();
+            $table->string('gallery_image')->nullable();
             $table->string('status')->default(0);
             $table->timestamps();
         });
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('about_settings');
+        Schema::dropIfExists('galleries');
     }
 };
