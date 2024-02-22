@@ -68,13 +68,34 @@
           $(document).ready(function() {
               $('#datatable').DataTable();
           });
+
+
+          //  image omload function 
+          $(document).ready(function() {
+              $('#image').change(function(e) {
+                  var reader = new FileReader();
+                  reader.onload = function(e) {
+                      $('#showImage').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(e.target.files['0']);
+              });
+          });
+          $(document).ready(function() {
+              $('#image2').change(function(e) {
+                  var reader = new FileReader();
+                  reader.onload = function(e) {
+                      $('#showImage2').attr('src', e.target.result);
+                  }
+                  reader.readAsDataURL(e.target.files['0']);
+              });
+          });
       </script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-<script src="{{ asset('backend/assets/js/code.js') }}"></script>
-<script src="{{ asset('backend') }}/assets/js/jquery.min.js"></script>
+      <script src="{{ asset('backend/assets/js/code.js') }}"></script>
+      <script src="{{ asset('backend') }}/assets/js/jquery.min.js"></script>
 
-<script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+      <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
 
       </body>
 

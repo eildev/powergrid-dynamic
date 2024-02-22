@@ -8,6 +8,10 @@ use App\Http\Controllers\Backend\FooterController;
 use App\Http\Controllers\Backend\AboutController;
 use App\Http\Controllers\Backend\SocialIconController;
 use App\Http\Controllers\Backend\OverviewController;
+use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\OurPartnerController;
+use App\Http\Controllers\Backend\TestimonialController;
+use App\Http\Controllers\Backend\WhyChooseUsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +33,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 //Admin Dashboard
-Route::middleware(['auth','role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::get('/admin/dashboard', [AdminController::class, 'AdminDashboard'])->name('admin.dashboard');
     Route::get('/admin/logout', [AdminController::class, 'AdminDestroy'])->name('admin.logout');
     Route::get('/admin/profile', [AdminController::class, 'AdminProfile'])->name('admin.profile');
@@ -39,16 +43,16 @@ Route::middleware(['auth','role:admin'])->group(function () {
     Route::post('/admin/update/password', [AdminController::class, 'AdminUpdatePassword'])->name('update.password');
 });
 
-Route::middleware(['auth','role:admin'])->group(function () {
+Route::middleware(['auth', 'role:admin'])->group(function () {
 
     //Footer Route
-    Route::controller(FooterController::class)->group(function(){
-        Route::get('/footer/add','FooterAdd')->name('add.footer');
-        Route::post('/footer/store','StoreFooter')->name('store.footer');
-        Route::get('/footer/view','ViewFooter')->name('view.footer');
-        Route::get('/footer/edit/{id}','EditFooter')->name('edit.footer');
-        Route::post('/footer/update/{id}','UpdateFooter')->name('update.footer');
-        Route::get('/footer/delete/{id}','DeleteFooter')->name('delete.footer');
+    Route::controller(FooterController::class)->group(function () {
+        Route::get('/footer/add', 'FooterAdd')->name('add.footer');
+        Route::post('/footer/store', 'StoreFooter')->name('store.footer');
+        Route::get('/footer/view', 'ViewFooter')->name('view.footer');
+        Route::get('/footer/edit/{id}', 'EditFooter')->name('edit.footer');
+        Route::post('/footer/update/{id}', 'UpdateFooter')->name('update.footer');
+        Route::get('/footer/delete/{id}', 'DeleteFooter')->name('delete.footer');
     });
 
     // home settings related routes
@@ -69,7 +73,6 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::get('/about/edit/{id}', 'EditAbout')->name('edit.about');
         Route::post('/about/update/{id}', 'UpdateAbout')->name('update.about');
         Route::get('/about/delete/{id}', 'DeleteAbout')->name('delete.about');
-
     });
 
     // social Icon related routes 
@@ -94,6 +97,54 @@ Route::middleware(['auth','role:admin'])->group(function () {
         Route::post('/overview-status/{id}', 'status')->name('overview.status');
     });
 
+
+    // News related routes 
+    Route::controller(NewsController::class)->group(function () {
+        Route::get('/news', 'index')->name('news');
+        Route::post('/news/store', 'store')->name('news.store');
+        Route::get('/manage/news', 'view')->name('manage.news');
+        Route::get('/edit-news/{id}', 'edit')->name('edit.news');
+        Route::post('/update-news/{id}', 'update')->name('update.news');
+        Route::get('/delete-news/{id}', 'delete')->name('delete.news');
+        Route::post('/news-status/{id}', 'status')->name('news.status');
+    });
+
+    // Testimonial related routes 
+    Route::controller(TestimonialController::class)->group(function () {
+        Route::get('/testimonial', 'index')->name('testimonial');
+        Route::post('/testimonial/store', 'store')->name('testimonial.store');
+        Route::get('/manage/testimonial', 'view')->name('manage.testimonial');
+        Route::get('/edit-testimonial/{id}', 'edit')->name('edit.testimonial');
+        Route::post('/update-testimonial/{id}', 'update')->name('update.testimonial');
+        Route::get('/delete-testimonial/{id}', 'delete')->name('delete.testimonial');
+        Route::post('/testimonial-status/{id}', 'status')->name('testimonial.status');
+    });
+
+    // Why Choose us related routes 
+    Route::controller(WhyChooseUsController::class)->group(function () {
+        Route::get('/why-choose-us', 'index')->name('why-choose-us');
+        Route::post('/why-choose-us/store', 'store')->name('why-choose-us.store');
+        Route::get('/manage/why-choose-us', 'view')->name('manage.why-choose-us');
+        Route::get('/edit-why-choose-us/{id}', 'edit')->name('edit.why-choose-us');
+        Route::post('/update-why-choose-us/{id}', 'update')->name('update.why-choose-us');
+        Route::get('/delete-why-choose-us/{id}', 'delete')->name('delete.why-choose-us');
+        Route::post('/why-choose-us-status/{id}', 'status')->name('why-choose-us.status');
+    });
+
+    // Our Partner related routes 
+    Route::controller(OurPartnerController::class)->group(function () {
+        Route::get('/our-partner', 'index')->name('our-partner');
+        Route::post('/our-partner/store', 'store')->name('our-partner.store');
+        Route::get('/manage/our-partner', 'view')->name('manage.our-partner');
+        Route::get('/edit-our-partner/{id}', 'edit')->name('edit.our-partner');
+        Route::post('/update-our-partner/{id}', 'update')->name('update.our-partner');
+        Route::get('/delete-our-partner/{id}', 'delete')->name('delete.our-partner');
+        Route::post('/our-partner-status/{id}', 'status')->name('our-partner.status');
+    });
+
+
+
+    // Log::warning("message");
 });
 
 
@@ -108,4 +159,4 @@ Route::middleware('auth')->group(function () {
 //Admin login forgot Pw Route
 Route::get('/admin/login', [AdminController::class, 'AdminLogin'])->name('admin.login');
 Route::get('/admin/forgot/password', [AdminController::class, 'AdminForgotPassword'])->name('admin.forgot.password');
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

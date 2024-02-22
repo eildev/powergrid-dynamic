@@ -68,6 +68,46 @@
                         <li><a href="{{ route('manage.overview') }}">Manage Overview</a></li>
                     </ul>
                 </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>News</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('news') }}">Add News</a></li>
+                        <li><a href="{{ route('manage.news') }}">Manage News</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Testimonial</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('testimonial') }}">Add Testimonial</a></li>
+                        <li><a href="{{ route('manage.testimonial') }}">Manage Testimonial</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Why Choose Us</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('why-choose-us') }}">Add Why Choose Us</a></li>
+                        <li><a href="{{ route('manage.why-choose-us') }}">Manage Why Choose Us</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-mail-send-line"></i>
+                        <span>Our Partner</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{ route('our-partner') }}">Add Our Partner</a></li>
+                        <li><a href="{{ route('manage.our-partner') }}">Manage Our Partner</a></li>
+                    </ul>
+                </li>
 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
