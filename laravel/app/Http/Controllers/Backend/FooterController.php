@@ -23,7 +23,7 @@ class FooterController extends Controller
            'created_at'=> Carbon::now(),
         ]);
         $notification = array(
-            'message' =>'Footer Data Inert Sccessfully',
+            'message' =>'Footer Data Insert Sccessfully',
             'alert-type'=> 'info'
          );
         return redirect()->route('view.footer')->with($notification);
