@@ -61,7 +61,6 @@
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-mail-send-line"></i>
-<<<<<<< HEAD
                         <span>Category Settings</span>
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
@@ -109,16 +108,18 @@
                         <li><a href="{{ route('gallery.view') }}">Manage Managing team</a></li>
                     </ul>
                 </li>
-=======
-                        <span>Overview</span>
-                    </a>
+                <li>
+                        <span></span>
+                        <a href="javascript: void(0);" class="has-arrow waves-effect">
+                            <i class="ri-mail-send-line"></i>
+                            <span>Overview</span>
+                        </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('overview') }}">Add Overview</a></li>
                         <li><a href="{{ route('manage.overview') }}">Manage Overview</a></li>
                     </ul>
                 </li>
 
->>>>>>> 9a5c4163c76729d678f9174601b6cd371bae6238
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
                         <i class="ri-layout-3-line"></i>
