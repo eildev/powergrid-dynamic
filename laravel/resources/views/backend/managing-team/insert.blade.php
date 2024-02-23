@@ -1,7 +1,5 @@
 @extends('backend.admin_master')
 @section('admin')
-{{-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> --}}
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <div class="row">
             <div class="col-12">
@@ -44,9 +42,7 @@
                     <label for="facebook" class="col-sm-2 col-form-label">Facebook</label>
                     <div class="col-sm-10">
                         <input class="form-control" name="facebook" type="url" placeholder="Enter Facebook Url" id="facebook">
-                        {{-- @error('facebook')
-                        <span class="text-danger">{{ $message }}</span>
-                         @enderror --}}
+                       
                     </div>
 
                 </div>
@@ -54,9 +50,7 @@
                     <label for="example-email-input" class="col-sm-2 col-form-label">instagram</label>
                     <div class="col-sm-10">
                         <input class="form-control " name="instagram" type="url" placeholder="Enter instagram Url " id="example-email-input">
-                        {{-- @error('instagram')
-                        <span class="text-danger">{{ $message }}</span>
-                         @enderror --}}
+                       
                     </div>
 
                 </div>
@@ -64,9 +58,7 @@
                     <label for="example-email-input" class="col-sm-2 col-form-label">linkedin</label>
                     <div class="col-sm-10">
                         <input class="form-control " name="linkedin" type="url" placeholder="Enter linkedin url " id="example-email-input">
-                        {{-- @error('linkedin')
-                        <span class="text-danger">{{ $message }}</span>
-                         @enderror --}}
+                     
                     </div>
 
                 </div>
@@ -74,9 +66,7 @@
                     <label for="example-email-input" class="col-sm-2 col-form-label">Twitter</label>
                     <div class="col-sm-10">
                         <input class="form-control " name="twitter" type="url" placeholder="Enter twitter url" id="example-email-input">
-                        {{-- @error('twitter')
-                        <span class="text-danger">{{ $message }}</span>
-                         @enderror --}}
+                    
                     </div>
 
                 </div>
@@ -92,17 +82,15 @@
                 <div class="row mb-3">
                     <label for="example-input" class="col-sm-2 col-form-label"> Image</label>
                     <div class="col-sm-10">
-                        <input name="managing_image" class="form-control @error('managing_image') is-invalid  @enderror" type="file"  id="image">
+                        <input name="managing_image" class="form-control" type="file"  id="image">
                     </div>
                 </div>
                 <!-- end row -->
                 <div class="row mb-3">
                     <label for="example-url-input" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
-                        <img id="showImage" class="rounded avatar-lg " src="{{asset('uploads/about/no_images.jpg')}}" alt="About Image">
-                        @error('managing_image')
-                         <span class="text-danger">{{ $message }}</span>
-                        @enderror
+                        <img id="showImage" class="rounded avatar-lg " src="{{asset('uploads/about/no_images.jpg')}}" alt="Managing Image">
+                       
                     </div>
 
                 </div>
@@ -129,20 +117,35 @@
             }
             reader.readAsDataURL(e.target.files['0']);
         });
-
-        // $('#addajax').on('submit', function(event){
-        //     event.preventDefault();
-        //     var formData = new FormData(this);
-        //     $.ajax({
-        //         url:"{{url('managing/team/store')}}",
-        //         method:"POST",
-        //         data:formData,
-        //         success:function(data){
-        //             console.log(data);
-        //             //$('#addajax')[0].reset();
-        //         }
-        //     });
-        //  });
+        $('#addajax').on('submit', function (e) {
+            e.preventDefault(); // Prevent the default form submission
+            var formData = new FormData(this); // Create FormData object to store form data
+            $('#name_error').text('');
+            // Send AJAX request
+            $.ajax({
+                type: 'POST',
+                url: $(this).attr('action'), // Get the form action URL
+                data: formData,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (response) {
+                 toastr.success(response.message);
+              $('#addajax')[0].reset();
+                  },
+              error: function (xhr, status, error) {
+        // Handle error response
+            if(xhr.status === 422) {
+               var errors = xhr.responseJSON.errors;
+              $.each(errors, function (key, value) {
+                toastr.error(value[0]); 
+              });
+           } else {
+            toastr.error('Error occurred while submitting the form.');
+           }
+          }
+            });
+        });
     });
 </script>
 @endsection
