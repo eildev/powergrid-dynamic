@@ -14,11 +14,6 @@ class GalleryController extends Controller
         return view('backend.gallery.insert',compact('category'));
     }//End MEthod
     public function StoreGallery(Request $request){
-        $request->validate([
-            'category_name' =>'required',
-            'gallery_title' =>'required',
-            'gallery_image' =>'required|image|mimes:jpeg,png,jpg,gif',
-        ]);
         if ($request->gallery_image) {
             $imageName = rand().'.'.$request->gallery_image->extension();
             $request->gallery_image->move(public_path('uploads/gallery/'), $imageName);
@@ -27,11 +22,16 @@ class GalleryController extends Controller
             $gallery->title = $request->gallery_title;
             $gallery->gallery_image = $imageName;
             $gallery->save();
-        $notification = array(
-         'message' =>'Gallery Insert Sccessfully',
-            'alert-type'=> 'info'
-         );
-        return redirect()->route('gallery.view')->with($notification);
+            return response()->json([
+                'message' => 'Gallery Inserted Successfully',
+                'status' => 'success',
+            ]);
+            return response()->json([
+                'message' => 'Failed to insert gallery',
+                'status' => 'error',
+            ], 500);
+
+    return redirect()->route('gallery.view');
     }
 }//End Method
     public function ViewGallery(){
