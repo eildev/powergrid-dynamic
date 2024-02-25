@@ -49,89 +49,87 @@ class HomeSettingsController extends Controller
         $homeData = HomeSettings::findOrFail($id);
         return view('backend.home-page-setting.edit', compact('homeData'));
     }
+
     public function update(Request $request, $id)
     {
-        if ($request->logo && $request->fav) {
+        $request->validate([
+            'title' => 'required|max:100',
+            'short_description' => 'required|max:250',
+            'long_description' => 'required|max:2500',
+            'keywords' => 'required|max:250',
+            'logo' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'fav' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+
+        $homeData = HomeSettings::findOrFail($id);
+
+        if ($request->hasFile('logo') && $request->hasFile('fav')) {
             $request->validate([
-                'title' => 'required|max:100',
-                'short_description' => 'required|max:250',
-                'long_description' => 'required|max:2500',
-                'keywords' => 'required|max:250',
                 'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
                 'fav' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
-            $logoImage = rand() . '.' . $request->logo->extension();
-            $request->logo->move(public_path('uploads/home-settings/'), $logoImage);
-            $favIcons = rand() . '.' . $request->fav->extension();
-            $request->fav->move(public_path('uploads/home-settings/'), $favIcons);
-            $homeData = HomeSettings::findOrFail($id);
-            $path = public_path('uploads/home-settings/' . $homeData->logo);
-            $path = public_path('uploads/home-settings/' . $homeData->fav);
-            if (file_exists($path)) {
-                @unlink($path);
+
+            $logoImage = rand() . '.' . $request->file('logo')->extension();
+            $request->file('logo')->move(public_path('uploads/home-settings/'), $logoImage);
+
+            $favIcons = rand() . '.' . $request->file('fav')->extension();
+            $request->file('fav')->move(public_path('uploads/home-settings/'), $favIcons);
+
+            // Remove existing images
+            $logoPath = public_path('uploads/home-settings/' . $homeData->logo);
+            $favPath = public_path('uploads/home-settings/' . $homeData->fav);
+
+            if (file_exists($logoPath)) {
+                @unlink($logoPath);
             }
-            $homeData->title = $request->title;
-            $homeData->short_description = $request->short_description;
-            $homeData->long_description = $request->long_description;
-            $homeData->keywords = $request->keywords;
-            $homeData->update();
-            return redirect()->route('manage.home.settings')->with('message', 'Home Settings Successfully updated');
-        } else if ($request->logo) {
-            $request->validate([
-                'title' => 'required|max:100',
-                'short_description' => 'required|max:250',
-                'long_description' => 'required|max:2500',
-                'keywords' => 'required|max:250',
-                'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            ]);
-            $logoImage = rand() . '.' . $request->logo->extension();
-            $request->logo->move(public_path('uploads/home-settings/'), $logoImage);
-            $homeData = HomeSettings::findOrFail($id);
-            $path = public_path('uploads/home-settings/' . $homeData->logo);
-            if (file_exists($path)) {
-                @unlink($path);
+
+            if (file_exists($favPath)) {
+                @unlink($favPath);
             }
-            $homeData->title = $request->title;
-            $homeData->short_description = $request->short_description;
-            $homeData->long_description = $request->long_description;
+
             $homeData->logo = $logoImage;
-            $homeData->keywords = $request->keywords;
-            $homeData->update();
-            return redirect()->route('manage.home.settings')->with('message', 'Home Settings Successfully updated');
-        } else if ($request->fav) {
+            $homeData->fav = $favIcons;
+        } elseif ($request->hasFile('logo')) {
             $request->validate([
-                'title' => 'required|max:100',
-                'short_description' => 'required|max:250',
-                'long_description' => 'required|max:2500',
-                'keywords' => 'required|max:250',
+                'logo' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            ]);
+
+            $logoImage = rand() . '.' . $request->file('logo')->extension();
+            $request->file('logo')->move(public_path('uploads/home-settings/'), $logoImage);
+
+            // Remove existing logo image
+            $logoPath = public_path('uploads/home-settings/' . $homeData->logo);
+            if (file_exists($logoPath)) {
+                @unlink($logoPath);
+            }
+
+            $homeData->logo = $logoImage;
+        } elseif ($request->hasFile('fav')) {
+            $request->validate([
                 'fav' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
             ]);
-            $favIcons = rand() . '.' . $request->fav->extension();
-            $request->fav->move(public_path('uploads/home-settings/'), $favIcons);
-            $homeData = HomeSettings::findOrFail($id);
-            $path = public_path('uploads/home-settings/' . $homeData->fav);
-            if (file_exists($path)) {
-                @unlink($path);
+
+            $favIcons = rand() . '.' . $request->file('fav')->extension();
+            $request->file('fav')->move(public_path('uploads/home-settings/'), $favIcons);
+
+            // Remove existing fav image
+            $favPath = public_path('uploads/home-settings/' . $homeData->fav);
+            if (file_exists($favPath)) {
+                @unlink($favPath);
             }
-            $homeData->title = $request->title;
-            $homeData->short_description = $request->short_description;
-            $homeData->long_description = $request->long_description;
-            $homeData->keywords = $request->keywords;
-            $homeData->update();
-            return redirect()->route('manage.home.settings')->with('message', 'Home Settings Successfully updated');
-        } else {
-            $request->validate([
-                'title' => 'required|max:100',
-            ]);
-            $homeData = HomeSettings::findOrFail($id);
-            $homeData->title = $request->title;
-            $homeData->short_description = $request->short_description;
-            $homeData->long_description = $request->long_description;
-            $homeData->keywords = $request->keywords;
-            $homeData->update();
-            return redirect()->route('manage.home.settings')->with('message', 'Home Settings Successfully updated');
+
+            $homeData->fav = $favIcons;
         }
+
+        $homeData->title = $request->title;
+        $homeData->short_description = $request->short_description;
+        $homeData->long_description = $request->long_description;
+        $homeData->keywords = $request->keywords;
+        $homeData->update();
+
+        return redirect()->route('manage.home.settings')->with('message', 'Home Settings Successfully updated');
     }
+
 
     public function delete($id)
     {
