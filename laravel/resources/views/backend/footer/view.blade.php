@@ -43,9 +43,9 @@
                                 <td>{{$item->link}}</td>
                                 <td>{{$item->website}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-warning" href="{{route('edit.footer',$item->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-warning" href="{{route('edit.footer',$item->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                <a href="{{route('delete.footer',$item->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a></td>
+                                <a href="{{route('delete.footer',$item->id)}}" id="delete" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

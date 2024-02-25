@@ -39,9 +39,9 @@
                                 <td><img style="height: 60px; width:60px" src="{{asset('uploads/services_image/'.$item->services_details_image)}}" alt=""></td>
 
                                 <td>
-                                    <a class="btn btn-sm btn-warning" href="{{route('edit.services.details',$item->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-warning" href="{{route('edit.services.details',$item->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                <a href="{{route('delete.services.details',$item->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a></td>
+                                <a href="{{route('delete.services.details',$item->id)}}" id="delete" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

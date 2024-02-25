@@ -38,9 +38,9 @@
                                 <td><img style="height: 60px; width:60px" src="{{asset('uploads/about/'.$item->image)}}" alt=""></td>
 
                                 <td>
-                                    <a class="btn btn-sm btn-warning" href="{{route('edit.about',$item->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-warning" href="{{route('edit.about',$item->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                <a href="{{route('delete.about',$item->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a></td>
+                                <a href="{{route('delete.about',$item->id)}}" id="delete" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

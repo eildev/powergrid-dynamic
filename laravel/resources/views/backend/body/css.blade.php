@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <meta charset="utf-8" />
     <title>Dashboard |Admin & Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -34,13 +33,7 @@
     <link rel="stylesheet" type="text/css"
         href="https://cdn.jsdelivr.net/bootstrap.tagsinput/0.8.0/bootstrap-tagsinput.css">
 
-    <style type="text/css">
-        .tag {
-            margin-right: 2px;
-            color: #b70000;
-            font-weight: 700px;
-        }
-    </style>
+
      <!-- tinymce js here -->
 
 </head>

@@ -35,9 +35,9 @@
                                 <td>{{$item->services_sub_title}}</td>
                                 <td>{{$item->service_description}}</td>
                                 <td>
-                                    <a class="btn btn-sm btn-warning" href="{{route('edit.services',$item->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-warning" href="{{route('edit.services',$item->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                <a href="{{route('delete.services',$item->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a></td>
+                                <a href="{{route('delete.services',$item->id)}}" id="delete" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>

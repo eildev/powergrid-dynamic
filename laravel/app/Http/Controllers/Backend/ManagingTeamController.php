@@ -46,8 +46,8 @@ class ManagingTeamController extends Controller
             ];
             return response()->json($notification);
         } else {
-                if($validator->fails()) {
-                    return response()->json(['errors' => $validator->errors()], 422);
+                if($validateData->fails()) {
+                    return response()->json(['errors' => $validateData->errors()], 422);
                 }
             return response()->json($notification, 500); // Return error status code
         }
