@@ -15,7 +15,7 @@
                        </ol>
                      </div>
                      </div>
-                    <h3 class="card-title">Gallery Datatable</h3>
+                    <h3 class="card-title">Services Datatable</h3>
                     <table id="datatable" class="table dt-responsive nowrap w-100">
                         <thead>
                             <tr>

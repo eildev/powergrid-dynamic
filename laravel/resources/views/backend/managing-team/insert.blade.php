@@ -10,7 +10,7 @@
             <div class="page-title-right">
                <ol class="breadcrumb m-0">
                 <li class="breadcrumb-item active">
-                    <a href="" class=" btn btn-sm btn-primary text-light fs-4"> +</a>
+                    <a href="{{route('managing.team.view')}}" class=" btn btn-sm btn-primary text-light fs-4"> +</a>
                 </li>
               </ol>
             </div>
@@ -42,7 +42,7 @@
                     <label for="facebook" class="col-sm-2 col-form-label">Facebook</label>
                     <div class="col-sm-10">
                         <input class="form-control" name="facebook" type="url" placeholder="Enter Facebook Url" id="facebook">
-                       
+
                     </div>
 
                 </div>
@@ -50,7 +50,7 @@
                     <label for="example-email-input" class="col-sm-2 col-form-label">instagram</label>
                     <div class="col-sm-10">
                         <input class="form-control " name="instagram" type="url" placeholder="Enter instagram Url " id="example-email-input">
-                       
+
                     </div>
 
                 </div>
@@ -58,7 +58,7 @@
                     <label for="example-email-input" class="col-sm-2 col-form-label">linkedin</label>
                     <div class="col-sm-10">
                         <input class="form-control " name="linkedin" type="url" placeholder="Enter linkedin url " id="example-email-input">
-                     
+
                     </div>
 
                 </div>
@@ -66,7 +66,7 @@
                     <label for="example-email-input" class="col-sm-2 col-form-label">Twitter</label>
                     <div class="col-sm-10">
                         <input class="form-control " name="twitter" type="url" placeholder="Enter twitter url" id="example-email-input">
-                    
+
                     </div>
 
                 </div>
@@ -90,7 +90,7 @@
                     <label for="example-url-input" class="col-sm-2 col-form-label"></label>
                     <div class="col-sm-10">
                         <img id="showImage" class="rounded avatar-lg " src="{{asset('uploads/about/no_images.jpg')}}" alt="Managing Image">
-                       
+
                     </div>
 
                 </div>
@@ -138,7 +138,7 @@
             if(xhr.status === 422) {
                var errors = xhr.responseJSON.errors;
               $.each(errors, function (key, value) {
-                toastr.error(value[0]); 
+                toastr.error(value[0]);
               });
            } else {
             toastr.error('Error occurred while submitting the form.');
