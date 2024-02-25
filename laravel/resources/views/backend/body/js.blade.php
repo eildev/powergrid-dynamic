@@ -70,7 +70,7 @@
           });
 
 
-          //  image omload function 
+          //  image omload function
           $(document).ready(function() {
               $('#image').change(function(e) {
                   var reader = new FileReader();
@@ -96,7 +96,13 @@
       <script src="{{ asset('backend') }}/assets/js/jquery.min.js"></script>
 
       <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
-
+      <style type="text/css">
+        .bootstrap-tagsinput .tag{
+            margin-right: 2px;
+            color: #b70000;
+            font-weight: 700px;
+        }
+    </style>
       </body>
 
       </html>

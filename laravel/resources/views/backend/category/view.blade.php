@@ -34,9 +34,9 @@
                                 <td>{{$item->category_name}}</td>
 
                                 <td>
-                                    <a class="btn btn-sm btn-warning" href="{{route('edit.category',$item->id)}}">Edit</a>
+                                    <a class="btn btn-sm btn-warning" href="{{route('edit.category',$item->id)}}"><i class="fas fa-pencil-alt"></i></a>
 
-                                <a href="{{route('delete.category',$item->id)}}" id="delete" class="btn btn-sm btn-danger">Delete</a></td>
+                                <a href="{{route('delete.category',$item->id)}}" id="delete" class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i></a></td>
                             </tr>
                             @endforeach
                         </tbody>
