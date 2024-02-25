@@ -74,7 +74,7 @@ class ServicesController extends Controller
             'services_details_image' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        if ($request->services_details_icon && $request->services_details_image) {
+        if($request->services_details_icon && $request->services_details_image) {
             $iconName = rand() . '.' . $request->services_details_icon->extension();
             $request->services_details_icon->move(public_path('uploads/services_image/'), $iconName);
             $imageName = rand() . '.' . $request->services_details_image->extension();
@@ -104,7 +104,40 @@ class ServicesController extends Controller
         return view('backend.our_services.services_details.edit',compact('servicesDetails','services'));
     }//End Method
     public function UpdateServicesDetails(Request $request,$id){
-        if ($request->services_details_icon) {
+         if($request->services_details_image && $request->services_details_icon) {
+            $request->validate([
+                'services_details_title' => 'required',
+                'services_title' => 'required',
+                'services_details_description' => 'required',
+            ]);
+           $iconName = rand() . '.' . $request->services_details_icon->extension();
+           $request->services_details_icon->move(public_path('uploads/services_image/'), $iconName);
+            $imageName = rand() . '.' . $request->services_details_image->extension();
+            $request->services_details_image->move(public_path('uploads/services_image/'), $imageName);
+            $servicesDetails = ServicesDetails::findOrFail($id);
+          $path1 =public_path('uploads/services_image/'. $servicesDetails->services_details_icon);
+           $path2 =public_path('uploads/services_image/'. $servicesDetails->services_details_image);
+                if(file_exists($path1)){
+                    @unlink($path1);
+                }
+                if(file_exists($path2)){
+                    @unlink($path2);
+                }
+            $servicesDetails->services_details_title = $request->services_details_title;
+           $servicesDetails->services_details_icon = $iconName;
+            $servicesDetails->services_details_image = $imageName;
+            $servicesDetails->services_id =  $request->services_title;
+            $servicesDetails->services_details_description = $request->services_details_description;
+            $servicesDetails->update();
+
+           $notification = array(
+                'message' =>'Our Service Details Update With Both image  Sccessfully',
+                 'alert-type'=> 'info'
+              );
+             return redirect()->route('service.details.view')->with($notification);
+        }
+
+        elseif($request->services_details_icon) {
             $request->validate([
                 'services_details_title' => 'required',
                 'services_title' => 'required',
@@ -136,7 +169,7 @@ class ServicesController extends Controller
               );
              return redirect()->route('service.details.view')->with($notification);
         }
-        elseif ($request->services_details_image) {
+        elseif($request->services_details_image) {
             $request->validate([
                 'services_details_title' => 'required',
                 'services_title' => 'required',

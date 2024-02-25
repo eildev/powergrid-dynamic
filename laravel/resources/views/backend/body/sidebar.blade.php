@@ -105,7 +105,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{ route('managing.team.add') }}">Add Managing Team</a></li>
-                        <li><a href="{{ route('gallery.view') }}">Manage Managing team</a></li>
+                        <li><a href="{{ route('managing.team.view') }}">Manage Managing team</a></li>
                     </ul>
                 </li>
                 <li>

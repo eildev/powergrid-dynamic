@@ -129,10 +129,10 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(ManagingTeamController::class)->group(function () {
         Route::get('/managing/team/add', 'ManagingTeamAdd')->name('managing.team.add');
         Route::post('/managing/team/store', 'StoreManagingTeam')->name('store.managing.team');
-        //    Route::get('/services/details/view', 'ViewServicesDetails')->name('service.details.view');
-        //    Route::get('/services/details/edit/{id}', 'EditServicesDetails')->name('edit.services.details');
-        //    Route::post('/services/details/update/{id}', 'UpdateServicesDetails')->name('update.service.details');
-        //    Route::get('/services/details/delete/{id}', 'DeleteServicesDetails')->name('delete.services.details');
+        Route::get('/managing/team/view', 'ManagingTeamView')->name('managing.team.view');
+        Route::get('/managing/team/edit/{id}', 'EditManagingTeam')->name('edit.managing.team');
+        Route::post('/managing/team/update/{id}', 'UpdateManagingTeam')->name('managing.team.update');
+        Route::get('/managing/team/delete/{id}', 'DeleteManagingTeam')->name('delete.managing.team');
     });
 
     // Overview related routes
@@ -147,7 +147,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
 
-    // News related routes 
+    // News related routes
     Route::controller(NewsController::class)->group(function () {
         Route::get('/news', 'index')->name('news');
         Route::post('/news/store', 'store')->name('news.store');
@@ -158,7 +158,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/news-status/{id}', 'status')->name('news.status');
     });
 
-    // Testimonial related routes 
+    // Testimonial related routes
     Route::controller(TestimonialController::class)->group(function () {
         Route::get('/testimonial', 'index')->name('testimonial');
         Route::post('/testimonial/store', 'store')->name('testimonial.store');
@@ -169,7 +169,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/testimonial-status/{id}', 'status')->name('testimonial.status');
     });
 
-    // Why Choose us related routes 
+    // Why Choose us related routes
     Route::controller(WhyChooseUsController::class)->group(function () {
         Route::get('/why-choose-us', 'index')->name('why-choose-us');
         Route::post('/why-choose-us/store', 'store')->name('why-choose-us.store');
@@ -180,7 +180,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/why-choose-us-status/{id}', 'status')->name('why-choose-us.status');
     });
 
-    // Our Partner related routes 
+    // Our Partner related routes
     Route::controller(OurPartnerController::class)->group(function () {
         Route::get('/our-partner', 'index')->name('our-partner');
         Route::post('/our-partner/store', 'store')->name('our-partner.store');
