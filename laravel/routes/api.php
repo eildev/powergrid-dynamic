@@ -15,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::prefix('api')->group(function () {
-    // GET request to retrieve all footer data
-    Route::get('/footer-data', [FooterController::class, 'getAllFooterData']);
+// Route::prefix('api')->group(function () {
+//     // GET request to retrieve all footer data
+//     Route::get('/footer-data', [FooterController::class, 'getAllFooterData']);
+// });
+
+  //Footer Route
+Route::controller(FooterController::class)->group(function () {
+    Route::get('/footer-data', 'getAllFooterData');
 });
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {

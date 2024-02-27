@@ -71,10 +71,19 @@ class FooterController extends Controller
 
     public function getAllFooterData()
     {
-        $footers = FooterSetting::latest()->get();
-        return response()->json([
-            "status" => 200,
-            "footers" => $footers
-        ]);
+
+        try {
+            $footers = FooterSetting::latest()->get();
+            return response()->json([
+                "status" => 200,
+                "footers" => $footers
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => 500,
+                'message' => 'An error occurred while saving the logo name.',
+                'error' => $e->getMessage(),
+            ]);
+        }
     }
 }
